@@ -10,12 +10,6 @@
   text-align: center;
 }
 
-.App-header {
-  width: 100%;
-  height: 64px;
-  background-color: chocolate;
-}
-
 .App-main {
   display: flex;
   flex: 1;
