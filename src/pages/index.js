@@ -2,11 +2,13 @@ import React from 'react';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import Home from './Home';
+import Login from './Login';
 
 const Routes = [
   { path: '/', page: <div>Inicial</div> },
-  { path: '/login', page: <div>Login</div> },
-  { path: '/home', page: <div>Home</div> },
+  { path: '/login', page: <Login /> },
+  { path: '/home', page: <Home /> },
 ];
 
 const Router = () => {
@@ -16,7 +18,7 @@ const Router = () => {
       <Switch>
         {Routes.map((route) => {
           return (
-            <Route path={route.path} exact>
+            <Route key={route.path} path={route.path} exact>
               {route.page}
             </Route>
           );
