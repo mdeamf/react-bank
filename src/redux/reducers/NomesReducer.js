@@ -1,4 +1,9 @@
-import { AddEnd, AddNome, DelEnd, DelNome } from '../actions/NomesActions';
+import {
+  ADICIONAR_ENDERECO,
+  ADICIONAR_NOME,
+  REMOVER_ENDERECO,
+  REMOVER_NOME,
+} from '../actions/types';
 
 const initialState = {
   password: '',
@@ -7,29 +12,39 @@ const initialState = {
 };
 
 const NomesReducer = (state = initialState, action) => {
+  console.log('Iniciando Reducer...');
+  console.log('State Atual', state);
+  console.log('Action', action);
+
   let nomes = [...state.listaNomes];
   let enderecos = [...state.listaEnderecos];
 
   switch (action.type) {
-    case AddNome:
+    case ADICIONAR_NOME:
       nomes.push(action.nome);
       break;
 
-    case AddEnd:
+    case ADICIONAR_ENDERECO:
       enderecos.push(action.endereco);
       break;
 
-    case DelNome:
+    case REMOVER_NOME:
       nomes.pop();
       break;
 
-    case DelEnd:
+    case REMOVER_ENDERECO:
       enderecos.pop();
       break;
 
     default:
       break;
   }
+
+  console.log('Novo State', {
+    ...state,
+    listaNomes: nomes,
+    listaEnderecos: enderecos,
+  });
 
   return {
     ...state,

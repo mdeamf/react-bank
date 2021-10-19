@@ -12,10 +12,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const incluirNome = () => {
-    dispatch({
-      type: AddNome,
-      endereco: texto,
-    });
+    dispatch(AddNome(texto));
   };
 
   return (
