@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { AddNome } from '../../redux/actions/NomesActions';
+import { /* AddNome, */ DelNomeAndAddNome } from '../../redux/actions/NomesActions';
 
 const Home = () => {
   const [texto, setTexto] = useState('');
@@ -12,7 +12,8 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const incluirNome = () => {
-    dispatch(AddNome(texto));
+    /* dispatch(AddNome(texto)); */
+    dispatch(DelNomeAndAddNome(texto));
   };
 
   return (

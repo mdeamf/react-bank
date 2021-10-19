@@ -18,6 +18,16 @@ export const DelNome = () => {
   };
 };
 
+export const DelNomeAndAddNome = (novoNome) => {
+  return (dispatch) => {
+    dispatch(DelNome());
+
+    setTimeout(() => {
+      dispatch(AddNome(novoNome));
+    }, 3000);
+  };
+};
+
 export const AddEnd = (novoEndereco) => {
   return {
     type: ADICIONAR_ENDERECO,
