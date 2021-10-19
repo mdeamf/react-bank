@@ -37,7 +37,7 @@ const NomesReducer = (state = initialState, action) => {
       break;
 
     default:
-      break;
+      return state;
   }
 
   console.log('Novo State', {
