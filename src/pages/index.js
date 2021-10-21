@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Loading from '../components/Loading';
 import NavBar from '../components/NavBar';
 import Home from './Home';
 import Login from './Login';
@@ -14,6 +15,7 @@ const Routes = [
 const Router = () => {
   return (
     <BrowserRouter>
+      <Loading />
       <NavBar />
       <Switch>
         {Routes.map((route) => {

@@ -3,7 +3,7 @@ import './style.css';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { FazerLogin } from '../../redux/actions/LoginActions';
-import { ConsultarPedidos } from '../../redux/actions/PedidosActions';
+import { ShowLoading, HideLoading } from '../../redux/actions/LoadingActions';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,11 @@ const Home = () => {
   };
 
   const consultarPedido = () => {
-    dispatch(ConsultarPedidos());
+    // dispatch(ConsultarPedidos());
+    dispatch(ShowLoading());
+    setTimeout(() => {
+      dispatch(HideLoading());
+    }, 3000);
   };
 
   const lista = [1, 2, 3, 4];
