@@ -7,7 +7,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
-import NomesReducer from './redux/reducers/NomesReducer';
+import reducers from './redux/reducers';
 
 import Router from './pages';
 
@@ -17,7 +17,7 @@ function App() {
       key: 'root',
       storage: storage,
     },
-    NomesReducer
+    reducers
   );
 
   const store = createStore(NomesReducerPersist, applyMiddleware(thunk));

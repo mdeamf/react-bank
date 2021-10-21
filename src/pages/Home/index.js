@@ -1,34 +1,41 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { /* AddNome, */ DelNomeAndAddNome } from '../../redux/actions/NomesActions';
+import React from 'react';
+import './style.css';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { FazerLogin } from '../../redux/actions/LoginActions';
+import { ConsultarPedidos } from '../../redux/actions/PedidosActions';
 
 const Home = () => {
-  const [texto, setTexto] = useState('');
-
-  const nomes = useSelector((state) => {
-    return state.listaNomes;
-  });
-
   const dispatch = useDispatch();
+  const { jwt } = useSelector((state) => state.login);
+  const { pedido } = useSelector((state) => state.pedidos);
 
-  const incluirNome = () => {
-    /* dispatch(AddNome(texto)); */
-    dispatch(DelNomeAndAddNome(texto));
+  const fazerLogin = () => {
+    dispatch(FazerLogin('admin', 'admin'));
   };
 
-  return (
-    <div>
-      <input
-        type="text"
-        value={texto}
-        onChange={(e) => setTexto(e.target.value)}
-      />
-      <button type="button" onClick={incluirNome}>
-        Incluir Nome
-      </button>
+  const consultarPedido = () => {
+    dispatch(ConsultarPedidos());
+  };
 
-      {nomes.map((nome) => {
-        return <p key={nome}>Nome: {nome}</p>;
+  const lista = [1, 2, 3, 4];
+  const listaMap = lista.map((l) => {
+    return <p>{l}</p>;
+  });
+  console.log(listaMap);
+
+  return (
+    <div className="Home">
+      <button type="button" onClick={fazerLogin}>
+        Fazer Login
+      </button>
+      Token JWT: {jwt}
+      <button type="button" onClick={consultarPedido}>
+        Obter Pedido
+      </button>
+      Pedido: {JSON.stringify(pedido)}
+      {lista.map((l) => {
+        return <p>{l}</p>;
       })}
     </div>
   );
